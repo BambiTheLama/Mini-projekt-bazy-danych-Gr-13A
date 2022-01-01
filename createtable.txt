@@ -47,8 +47,8 @@ CREATE TABLE Karty (
 	Karta_ID NUMBER NOT NULL,
 	typ_karty varczar(20) NOT NULL,
 	znizka NUMBER NOT NULL,
-	data_wyrobienia NUMBER NOT NULL,
-	data_waznosci NUMBER NOT NULL,
+	data_wyrobienia DATE NOT NULL,
+	data_waznosci DATE NOT NULL,
 
 
 	CONSTRAINT Karty_pk PRIMARY KEY(Karta_ID)
