@@ -1,0 +1,58 @@
+CREATE TABLE Dane_osobowe (
+	dane_ID NUMBER NOT NULL,
+	Imie varchar(10) NOT NULL,
+	Nazwisko varchar(20) NOT NULL,
+	telefon NUMBER(9) NOT NULL,
+	email varchar NOT NULL,
+
+	CONSTRAINT Dane_osobowe_pk PRIMARY KEY(dane_ID)
+	);
+
+CREATE TABLE Adresy (
+	adres_ID NUMBER NOT NULL,
+	Miasto varchar(10) NOT NULL,
+	Kod_pocztowy varchar(6) NOT NULL,
+	Wojewodztwo varchar(15) NOT NULL,
+	Ulica varchar NOT NULL,
+	nr_domu NUMBER(3),
+
+	CONSTRAINT Adresy_pk PRIMARY KEY(adres_ID)
+	);
+
+CREATE TABLE Wyksztalcenie (
+	wyksztalcenie_ID NUMBER NOT NULL,
+	stopien NUMBER(1) NOT NULL,
+	nazwa_uczelni varchar(20) NOT NULL,
+	kierunek varchar(20) NOT NULL,
+	adres_uczelni varchar(6) NOT NULL,
+
+	CONSTRAINT Wyksztalcenie_pk PRIMARY KEY(wyksztalcenie_ID)
+	);
+
+CREATE TABLE Pracownik (
+	Pracownik_ID NUMBER NOT NULL,
+	adres_ID NUMBER NOT NULL,
+	dane_ID NUMBER NOT NULL,
+	wyksztalcenie_ID NUMBER NOT NULL,
+	stanowisko varchar(15),
+
+	CONSTRAINT Pracownik_pk PRIMARY KEY(Pracownik_ID)
+	CONSTRAINT Pracownik_fk0 FOREIGN KEY(adres_ID) REFERENCES Adresy(adres_ID),
+	CONSTRAINT Pracownik_fk1 FOREIGN KEY(dane_ID) REFERENCES Dane_osobowe(dane_ID),
+	CONSTRAINT Pracownik_fk2 FOREIGN KEY(wyksztalcenie_ID) REFERENCES Wyksztalcenie(wyksztalcenie_ID),
+
+	);
+
+CREATE TABLE Klient (
+	Klient_ID NUMBER NOT NULL,
+	adres_ID NUMBER NOT NULL,
+	dane_ID NUMBER NOT NULL,
+
+	CONSTRAINT Klient_pk PRIMARY KEY(Klient_ID)
+	CONSTRAINT Klient_fk0 FOREIGN KEY(adres_ID) REFERENCES Adresy(adres_ID),
+	CONSTRAINT Klient_fk1 FOREIGN KEY(dane_ID) REFERENCES Dane_osobowe(dane_ID),
+
+	);
+
+
+
