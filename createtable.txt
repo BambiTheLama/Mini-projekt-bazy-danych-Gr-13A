@@ -3,7 +3,7 @@ CREATE TABLE Dane_osobowe (
 	Imie varchar(10) NOT NULL,
 	Nazwisko varchar(20) NOT NULL,
 	telefon NUMBER(9) NOT NULL,
-	email varchar NOT NULL,
+	email varchar(20) NOT NULL,
 
 	CONSTRAINT Dane_osobowe_pk PRIMARY KEY(dane_ID)
 	);
@@ -13,7 +13,7 @@ CREATE TABLE Adresy (
 	Miasto varchar(10) NOT NULL,
 	Kod_pocztowy varchar(6) NOT NULL,
 	Wojewodztwo varchar(15) NOT NULL,
-	Ulica varchar NOT NULL,
+	Ulica varchar(20) NOT NULL,
 	nr_domu NUMBER(3),
 
 	CONSTRAINT Adresy_pk PRIMARY KEY(adres_ID)
@@ -36,20 +36,19 @@ CREATE TABLE Pracownik (
 	wyksztalcenie_ID NUMBER NOT NULL,
 	stanowisko varchar(15),
 
-	CONSTRAINT Pracownik_pk PRIMARY KEY(Pracownik_ID)
+	CONSTRAINT Pracownik_pk PRIMARY KEY(Pracownik_ID),
 	CONSTRAINT Pracownik_fk0 FOREIGN KEY(adres_ID) REFERENCES Adresy(adres_ID),
 	CONSTRAINT Pracownik_fk1 FOREIGN KEY(dane_ID) REFERENCES Dane_osobowe(dane_ID),
 	CONSTRAINT Pracownik_fk2 FOREIGN KEY(wyksztalcenie_ID) REFERENCES Wyksztalcenie(wyksztalcenie_ID)
 
 	);
-
+--5
 CREATE TABLE Karty (
 	Karta_ID NUMBER NOT NULL,
-	typ_karty varczar(20) NOT NULL,
+	typ_karty varchar(20) NOT NULL,
 	znizka NUMBER NOT NULL,
 	data_wyrobienia DATE NOT NULL,
 	data_waznosci DATE NOT NULL,
-
 
 	CONSTRAINT Karty_pk PRIMARY KEY(Karta_ID)
 	);
@@ -60,7 +59,7 @@ CREATE TABLE Klient (
 	dane_ID NUMBER NOT NULL,
 	Karta_ID NUMBER NOT NULL,
 
-	CONSTRAINT Klient_pk PRIMARY KEY(Klient_ID)
+	CONSTRAINT Klient_pk PRIMARY KEY(Klient_ID),
 	CONSTRAINT Klient_fk0 FOREIGN KEY(adres_ID) REFERENCES Adresy(adres_ID),
 	CONSTRAINT Klient_fk1 FOREIGN KEY(dane_ID) REFERENCES Dane_osobowe(dane_ID),
 	CONSTRAINT Klient_fk2 FOREIGN KEY(Karta_ID) REFERENCES Karty(Karta_ID)
@@ -84,7 +83,7 @@ CREATE TABLE Naprawy (
 	nazwa_naprawy varchar(100),
 	koszt_naprawy NUMBER,
 
-	CONSTRAINT Samochod_pk PRIMARY KEY(Naprawa_ID)
+	CONSTRAINT Naprawy_pk PRIMARY KEY(Naprawa_ID)
 	);
 
 CREATE TABLE Koszty (
@@ -104,9 +103,9 @@ CREATE TABLE Kierowcy (
 	Pracownik_ID NUMBER NOT NULL,
 	Samochod_ID NUMBER NOT NULL,
 
-	CONSTRAINT Klient_pk PRIMARY KEY(Klient_ID)
-	CONSTRAINT Klient_fk0 FOREIGN KEY(Pracownik_ID) REFERENCES Pracownik(Pracownik_ID),
-	CONSTRAINT Klient_fk1 FOREIGN KEY(Samochod_ID) REFERENCES Samochod(Samochod_ID)
+	CONSTRAINT Kierowcy_pk PRIMARY KEY(Kierowca_ID),
+	CONSTRAINT Kierowcy_fk0 FOREIGN KEY(Pracownik_ID) REFERENCES Pracownik(Pracownik_ID),
+	CONSTRAINT Kierowcy_fk1 FOREIGN KEY(Samochod_ID) REFERENCES Samochod(Samochod_ID)
 
 	);
 
@@ -115,7 +114,7 @@ CREATE TABLE Oplaty (
 	kwota NUMBER NOT NULL,
 	termin_platwnosc DATE,
 	rodzaj_platnosci DATE,	
-	rodzaj_potwierdzenia_platnosci varczar(7),
+	rodzaj_potwierdzenia_platnosci varchar(7),
 	dni_spoznienia NUMBER,
 
 	CONSTRAINT Oplaty_pk PRIMARY KEY(Oplata_ID)
@@ -135,14 +134,15 @@ CREATE TABLE Zlecenie (
 	waga NUMBER(5,2) ,
 	data_rozpoczecia DATE,
 	data_zakonczenia DATE,
-	status varczar(20),
+	status varchar(20),
 	
 
-	CONSTRAINT Zlecenie_pk PRIMARY KEY(zlecenie_ID)
+	CONSTRAINT Zlecenie_pk PRIMARY KEY(zlecenie_ID),
 	CONSTRAINT Zlecenie_fk0 FOREIGN KEY(Kierowca_ID) REFERENCES Kierowcy(Kierowca_ID),
 	CONSTRAINT Zlecenie_fk1 FOREIGN KEY(Klient_ID) REFERENCES Klient(Klient_ID),
 	CONSTRAINT Zlecenie_fk2 FOREIGN KEY(Adres_odbioru_ID) REFERENCES Adresy(adres_ID),
 	CONSTRAINT Zlecenie_fk3 FOREIGN KEY(Adres_dostawy_ID) REFERENCES Adresy(adres_ID),
 	CONSTRAINT Zlecenie_fk4 FOREIGN KEY(Oplata_ID) REFERENCES Oplaty(Oplata_ID)
 	);
+
 
