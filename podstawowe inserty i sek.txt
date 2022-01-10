@@ -1,0 +1,96 @@
+--sekwencje
+CREATE SEQUENCE osoba_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE adres_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE wyksztalcenie_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+
+--dane_osobowe
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Michał','Jańczyk',764280791,'michal12@o2.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Katarzyna','Musiał',354575831,'kasia542@owp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Jakub','Iskal',153578935,'kuba765@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Krystian','Darwin',209875343,'darwin88@o2.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Barbara','Kusa',856745635,'kusa44@gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Krystyna','Ściubiak',983677524,'krysia1@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Grzegorz','Brzęczyszczykiewicz',479007534,'grzesio.brz@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Hubert','Malwicki',344361187,'malwi2700@o2.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Helena','Jaskółka',870544467,'helalela@gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Józef','Bawar',116675334,'bawarek32@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Magdalena','Jas',534654767,'madzia33@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Krzysztof','Ligęza',765635455,'krzys21@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Bartosz','Duński',976424443,'bartosz77@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Przemysław','Mirosawski',357557844,'przemek177@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Piotr','Krzysztofik',174552344,'krzysztofik99@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Eryk','Nadsowski',235364676,'eryk688@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Michał','Prześlak',145434768,'michu333@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Paulina','Kryczka',906345577,'paula865@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Wiktoria','Zamis',123457887,'wika000@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Paweł','Teodorczyk',976500445,'pawel11@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Weronika','Herczyk',745524433,'wera44@gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Jadwiga','Malicka',987756434,'jadzia33@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Mateusz','Socha',436477532,'mati01@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Ryszard','Lubomirski',268980043,'lubis55@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Patrycja','Czerczuk',134378673,'pati444gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Szymon','Orzeł',780553422,'orzel123@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Tadeusz','Robak',547656006,'robak99@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Anna','Ryskala',243356666,'ania543@gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Sebastian','Malinowski',345776708,'seba78@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Dawid','Kaleta',400453453,'dawid919@onet.pl');
+
+--adresy
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Wesoła',11);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Otwock','05-400','mazowieckie','Dzierzby',15);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Wyszków','07-200','mazowieckie','Klasyków',32);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Piaseczno','02-793','mazowieckie','Estrady',17);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Wyszków','07-200','mazowieckie','Dzika',7);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Legionowo','05-110','mazowieckie','Fortowa',11);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Otwock','05-400','mazowieckie','Gabriela',22);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Gołębia',17);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Piaseczno','02-793','mazowieckie','Jarocińska',15);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Sójki',4);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Legionowo','05-110','mazowieckie','Juraty',13);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Wyszków','07-200','mazowieckie','Dostania',16);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Żytnia',23);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Otwock','05-400','mazowieckie','Dzielna',33);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Piaseczno','02-793','mazowieckie','Radosna',15);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Kraków','04-218','małopolskie','Achillesa',3);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Kalisz','62-800','wielkopolskie','Figiel',43);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Szczecin','16-402','zachodniopomorskie','Gębicka',23);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Gdańsk','80-001','pomorskie','Hortensji',13);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Bystra',2);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Białystok','15-003','podlaskie','Chylońska',26);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Kalisz','62-800','wielkopolskie','Czatów',16);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Gdańsk','80-001','pomorskie','Juraty',36);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Turkusowa',24);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Kielce','25-007','świętokrzyskie','Karala',19);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Kraków','04-218','małopolskie','Żytnia',5);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Białystok','15-003','podlaskie','Gronowa',27);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Frezji',11);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Animuszu',7);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Szczecin','16-402','zachodniopomorskie','Figowa',9);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-003','mazowieckie','Elekcyjna',12);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-007','mazowieckie','Flory',4);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-002','mazowieckie','Grodzka',14);
+
+--wykształcenie
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'licencjat','Szkoła Główna Handlowa w Warszawie','zarządzanie',31);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Szkoła Główna Handlowa w Warszawie','zarządzanie',31);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'licencjat','Szkoła Główna Handlowa w Warszawie','ekonomia',31);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Szkoła Główna Handlowa w Warszawie','ekonomia',31);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'licencjat','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie projektami',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie projektami',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'licencjat','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie sieciami handlowymi',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie sieciami handlowymi',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'doktor','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie sieciami handlowymi',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'inżynier','Politechnika Warszawska','Transport',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister inżynier','Politechnika Warszawska','Transport',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'doktor','Politechnika Warszawska','Transport',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'inżynier','Politechnika Warszawska','Zarządzanie i inżynieria produkcji',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister inżynier','Politechnika Warszawska','Zarządzanie i inżynieria produkcji',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'doktor','Politechnika Warszawska','Zarządzanie i inżynieria produkcji',33);
+
+
+
+
+
+
+
+
