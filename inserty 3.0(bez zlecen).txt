@@ -1,0 +1,288 @@
+--sekwencje
+CREATE SEQUENCE osoba_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE adres_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE wyksztalcenie_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE pracownik_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE karta_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE klient_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE naprawy_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE koszty_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE samochod_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE kierowca_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE oplata_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+CREATE SEQUENCE zlecenie_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+
+--dane_osobowe
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Michał','Jańczyk',764280791,'michal12@o2.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Katarzyna','Musiał',354575831,'kasia542@owp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Jakub','Iskal',153578935,'kuba765@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Krystian','Darwin',209875343,'darwin88@o2.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Barbara','Kusa',856745635,'kusa44@gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Krystyna','Ściubiak',983677524,'krysia1@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Grzegorz','Brzęczyszczykiewicz',479007534,'grzesio.brz@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Hubert','Malwicki',344361187,'malwi2700@o2.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Helena','Jaskółka',870544467,'helalela@gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Józef','Bawar',116675334,'bawarek32@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Magdalena','Jas',534654767,'madzia33@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Krzysztof','Ligęza',765635455,'krzys21@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Bartosz','Duński',976424443,'bartosz77@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Przemysław','Mirosawski',357557844,'przemek177@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Piotr','Krzysztofik',174552344,'krzysztofik99@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Eryk','Nadsowski',235364676,'eryk688@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Michał','Prześlak',145434768,'michu333@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Paulina','Kryczka',906345577,'paula865@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Wiktoria','Zamis',123457887,'wika000@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Paweł','Teodorczyk',976500445,'pawel11@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Weronika','Herczyk',745524433,'wera44@gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Jadwiga','Malicka',987756434,'jadzia33@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Mateusz','Socha',436477532,'mati01@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Ryszard','Lubomirski',268980043,'lubis55@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Patrycja','Czerczuk',134378673,'pati444gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Szymon','Orzeł',780553422,'orzel123@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Tadeusz','Robak',547656006,'robak99@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Anna','Ryskala',243356666,'ania543@gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Sebastian','Malinowski',345776708,'seba78@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Dawid','Kaleta',400453453,'dawid919@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Michał','Sendecki',534453344,'michal174@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Karol','Karnowski',252453422,'karol14@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Antoni','Lubos',755432454,'antos22@gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Szymon','Karolak',456345324,'szymek84@gmail.com');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Piotr','Gawęcki',242345311,'piotr933@o2.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Jakub','Zerdowski',732260644,'kuba33@wp.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Wiktor','Małecki',146743224,'wiktor99@onet.pl');
+INSERT INTO Dane_osobowe VALUES (osoba_seq.nextval,'Paweł','Dziuba',650054534,'pawcio64@onet.pl');
+
+--adresy
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Wesoła',11);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Otwock','05-400','mazowieckie','Dzierzby',15);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Wyszków','07-200','mazowieckie','Klasyków',32);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Piaseczno','02-793','mazowieckie','Estrady',17);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Wyszków','07-200','mazowieckie','Dzika',7);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Legionowo','05-110','mazowieckie','Fortowa',11);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Otwock','05-400','mazowieckie','Gabriela',22);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Gołębia',17);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Piaseczno','02-793','mazowieckie','Jarocińska',15);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Sójki',4);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Legionowo','05-110','mazowieckie','Juraty',13);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Wyszków','07-200','mazowieckie','Dostania',16);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Żytnia',23);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Otwock','05-400','mazowieckie','Dzielna',33);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Piaseczno','02-793','mazowieckie','Radosna',15);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Kraków','04-218','małopolskie','Achillesa',3);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Kalisz','62-800','wielkopolskie','Figiel',43);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Szczecin','16-402','zachodniopomorskie','Gębicka',23);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Gdańsk','80-001','pomorskie','Hortensji',13);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Bystra',2);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Białystok','15-003','podlaskie','Chylońska',26);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Kalisz','62-800','wielkopolskie','Czatów',16);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Gdańsk','80-001','pomorskie','Juraty',36);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Turkusowa',24);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Kielce','25-007','świętokrzyskie','Karala',19);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Kraków','04-218','małopolskie','Żytnia',5);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Białystok','15-003','podlaskie','Gronowa',27);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Frezji',11);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Animuszu',7);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Szczecin','16-402','zachodniopomorskie','Figowa',9);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-003','mazowieckie','Elekcyjna',12);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-007','mazowieckie','Flory',4);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-002','mazowieckie','Grodzka',14);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Drzewicka',22);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Otwock','05-400','mazowieckie','Malinowska',11);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Wyszków','07-200','mazowieckie','Kasyna',17);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Piaseczno','02-793','mazowieckie','Żytnia',4);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Wyszków','07-200','mazowieckie','Dzika',15);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Legionowo','05-110','mazowieckie','Fortowa',19);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Otwock','05-400','mazowieckie','Gabriela',27);
+INSERT INTO Adresy VALUES (adres_seq.nextval,'Warszawa','00-001','mazowieckie','Gołębia',5);
+
+--wykształcenie
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'licencjat','Szkoła Główna Handlowa w Warszawie','zarządzanie',31);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Szkoła Główna Handlowa w Warszawie','zarządzanie',31);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'licencjat','Szkoła Główna Handlowa w Warszawie','ekonomia',31);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Szkoła Główna Handlowa w Warszawie','ekonomia',31);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'licencjat','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie projektami',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie projektami',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'licencjat','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie sieciami handlowymi',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie sieciami handlowymi',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'doktor','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie sieciami handlowymi',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'inżynier','Politechnika Warszawska','Transport',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister inżynier','Politechnika Warszawska','Transport',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'doktor','Politechnika Warszawska','Transport',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'inżynier','Politechnika Warszawska','Zarządzanie i inżynieria produkcji',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister inżynier','Politechnika Warszawska','Zarządzanie i inżynieria produkcji',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'doktor','Politechnika Warszawska','Zarządzanie i inżynieria produkcji',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'licencjat','Szkoła Główna Handlowa w Warszawie','ekonomia',31);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Szkoła Główna Handlowa w Warszawie','ekonomia',31);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'inżynier','Politechnika Warszawska','Zarządzanie i inżynieria produkcji',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister inżynier','Politechnika Warszawska','Zarządzanie i inżynieria produkcji',33);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie projektami',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'licencjat','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie sieciami handlowymi',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'magister','Warszawska Szkoła Zarządzania - Szkoła Wyższa','zarządzanie sieciami handlowymi',32);
+INSERT INTO Wyksztalcenie VALUES (wyksztalcenie_seq.nextval,'inżynier','Politechnika Warszawska','Zarządzanie i inżynieria produkcji',33);
+
+--pracownik
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,1,2,1,'sekretarka',3500);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,2,5,2,'sekretarka',3500);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,3,6,5,'recepcjonistka',3300);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,4,1,9,'dyrektor',7000);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,5,3,12,'kierownik',5400);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,6,4,15,'kierownik',5400);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,7,7,10,'mechanik',4600);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,8,8,11,'mechanik',4600);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,9,9,3,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,10,10,4,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,11,11,6,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,12,12,7,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,13,13,8,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,14,14,13,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,15,15,14,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,31,31,23,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,32,32,16,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,33,33,19,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,34,34,20,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,35,35,17,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,36,36,18,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,37,37,21,'kierowca',3700);
+INSERT INTO Pracownik VALUES (pracownik_seq.nextval,38,38,22,'kierowca',3700);
+
+--karty
+INSERT INTO Karty VALUES (karta_seq.nextval,'podarunkowa',10,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'klienta',5,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'stałego klienta',15,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'podarunkowa',10,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'podarunkowa',10,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'stałego klienta',15,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'podarunkowa',10,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'klienta',5,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'klienta',5,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'podarunkowa',10,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'stałego klienta',15,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'stałego klienta',15,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'podarunkowa',10,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'klienta',5,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+INSERT INTO Karty VALUES (karta_seq.nextval,'podarunkowa',10,(SELECT sysdate - round(dbms_random.value(1,30)) as "data" from dual),(SELECT sysdate + round(dbms_random.value(1,30)) as "data" from dual));
+
+--klient
+INSERT INTO Klient VALUES (klient_seq.nextval,16,16,1);
+INSERT INTO Klient VALUES (klient_seq.nextval,17,17,NULL);
+INSERT INTO Klient VALUES (klient_seq.nextval,18,18,3);
+INSERT INTO Klient VALUES (klient_seq.nextval,19,19,4);
+INSERT INTO Klient VALUES (klient_seq.nextval,20,20,5);
+INSERT INTO Klient VALUES (klient_seq.nextval,21,21,6);
+INSERT INTO Klient VALUES (klient_seq.nextval,22,22,7);
+INSERT INTO Klient VALUES (klient_seq.nextval,23,23,NULL);
+INSERT INTO Klient VALUES (klient_seq.nextval,24,24,9);
+INSERT INTO Klient VALUES (klient_seq.nextval,25,25,10);
+INSERT INTO Klient VALUES (klient_seq.nextval,26,26,11);
+INSERT INTO Klient VALUES (klient_seq.nextval,27,27,NULL);
+INSERT INTO Klient VALUES (klient_seq.nextval,28,28,NULL);
+INSERT INTO Klient VALUES (klient_seq.nextval,29,29,14);
+INSERT INTO Klient VALUES (klient_seq.nextval,30,30,15);
+
+--naprawy
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Naprawa sprzęgła oraz wymiana dwumasy.',1537.22);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Wymiana tarcz i klocków hamulcowych.',543.03);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Naprawa i odgrzybianie klimatyzacji.',536.99);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Wymiana pasa przedniego, chłodnicy i poprawki lakiernicze.',2243.00);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Wymiana przycisku od hamulca ręcznego.',213.17);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,NULL,1455.86);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Generalny remont silnika.',2366.90);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Wymiana wahaczy i sprężyn w zawieszeniu.',753.22);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Wgranie nowej mapy.',933.01);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Wymiana dwumasy, obicie sprzęgła kewlarem oraz wymiana turbiny.',2421.11);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,NULL,1788.00);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Wymiana i wyważenie kół.',366.55);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Wymiana zamka w drzwiach.',191.15);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,'Naprawa wycieków silnika.',1455.49);
+INSERT INTO Naprawy VALUES (naprawy_seq.nextval,NULL,755.27);
+
+--koszty
+INSERT INTO Koszty VALUES (koszty_seq.nextval,47,282.94,4);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,135,812.7,11);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,111,668.22,9);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,87,523.74,2);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,145,872.9,7);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,55,331.1,1);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,98,589.96,3);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,151,909.02,10);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,107,644.14,5);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,122,734.44,14);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,64,385.28,6);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,124,746.48,8);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,103,620.06,12);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,94,565.88,13);
+INSERT INTO Koszty VALUES (koszty_seq.nextval,124,746.48,15);
+
+--samochody
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA J543','Peugeot','Boxer',2007,90,3);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA WP19','Renault','Master',2010,70,7);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA PJ81','Mercedes','Sprinter',2012,75,12);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA CNW6','Peugeot','Boxer',2006,90,4);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA 6421','Renault','Master',2009,70,1);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA PLA2','Renault','Master',2005,70,15);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA NFV7','Mercedes','Sprinter',2011,75,9);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA HGF6','Peugeot','Boxer',2008,90,2);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA 8552','Peugeot','Boxer',2007,90,5);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA N531','Mercedes','Sprinter',2010,75,8);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA GT44','Mercedes','Sprinter',2011,75,6);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA 754D','Peugeot','Boxer',2007,90,13);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA FRE1','Renault','Master',2009,70,10);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA MJH4','Peugeot','Boxer',2008,90,11);
+INSERT INTO Samochod VALUES (samochod_seq.nextval,'WA GR48','Mercedes','Sprinter',2012,75,14);
+
+--kierowcy
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,9,1);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,10,2);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,11,3);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,12,4);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,13,5);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,14,6);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,15,7);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,16,8);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,17,9);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,18,10);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,19,11);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,20,12);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,21,13);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,22,14);
+INSERT INTO Kierowcy VALUES (kierowca_seq.nextval,23,15);
+
+--oplaty
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,1150.27,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'gotówka','paragon',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,1833.79,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'karta','faktura',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,1574.22,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'blik','faktura',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,2433.11,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'przelew','paragon',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,1922.03,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'gotówka','paragon',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,2343.99,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'gotówka','faktura',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,1655.17,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'karta','paragon',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,1588.22,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'blik','paragon',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,2749.08,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'raty','faktura',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,1873.28,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'przelew','paragon',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,3127.25,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'gotówka','faktura',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,2411.98,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'karta','faktura',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,1547.77,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'karta','paragon',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,3251.19,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'raty','faktura',NULL);
+INSERT INTO Oplaty VALUES (oplata_seq.nextval,2109.99,(SELECT sysdate + round(dbms_random.value(20,30)) as "data" from dual),'przelew','faktura',NULL);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
