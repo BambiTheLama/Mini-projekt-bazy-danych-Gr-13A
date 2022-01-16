@@ -1,0 +1,187 @@
+CREATE TABLE Dane_osobowe (
+	dane_ID NUMBER NOT NULL,
+	Imie varchar(20) NOT NULL,
+	Nazwisko varchar(30) NOT NULL,
+	telefon NUMBER(15) NOT NULL,
+	email varchar(40),
+
+	CONSTRAINT Dane_osobowe_pk PRIMARY KEY(dane_ID)
+	);
+
+CREATE TABLE Adresy (
+	adres_ID NUMBER NOT NULL,
+	Miasto varchar(30) NOT NULL,
+	Kod_pocztowy varchar(6) NOT NULL,
+	Wojewodztwo varchar(30),
+	Ulica varchar(50) NOT NULL,
+	nr_domu NUMBER(5) NOT NULL,
+
+	CONSTRAINT Adresy_pk PRIMARY KEY(adres_ID)
+	);
+
+CREATE TABLE Wyksztalcenie (
+	wyksztalcenie_ID NUMBER NOT NULL,
+	stopien varchar(30) DEFAULT 'licencjat' CONSTRAINT stopien_check CHECK (stopien IN ('licencjat', 'inżynier', 'magister', 'magister inżynier', 'doktor', 'doktor habilitowany', 'profesor')),
+	nazwa_uczelni varchar(50) NOT NULL,
+	kierunek varchar(40) NOT NULL,
+	adres_uczelni NUMBER,
+
+	CONSTRAINT Wyksztalcenie_pk PRIMARY KEY(wyksztalcenie_ID),
+	CONSTRAINT Wyksztalcenie_fk0 FOREIGN KEY(adres_uczelni) REFERENCES Adresy(adres_ID)
+	);
+
+CREATE TABLE Pracownik (
+	Pracownik_ID NUMBER NOT NULL,
+	adres_ID NUMBER NOT NULL,
+	dane_ID NUMBER NOT NULL,
+	wyksztalcenie_ID NUMBER,
+	stanowisko varchar(35) DEFAULT 'pracownik' CONSTRAINT stanowisko_check CHECK (stanowisko IN ('pracownik', 'kierowca', 'mechanik', 'kierownik', 'dyrektor', 'recepcjonistka', 'sekretarka')),
+
+	CONSTRAINT Pracownik_pk PRIMARY KEY(Pracownik_ID),
+	CONSTRAINT Pracownik_fk0 FOREIGN KEY(adres_ID) REFERENCES Adresy(adres_ID),
+	CONSTRAINT Pracownik_fk1 FOREIGN KEY(dane_ID) REFERENCES Dane_osobowe(dane_ID),
+	CONSTRAINT Pracownik_fk2 FOREIGN KEY(wyksztalcenie_ID) REFERENCES Wyksztalcenie(wyksztalcenie_ID)
+
+	);
+
+CREATE TABLE Karty (
+	Karta_ID NUMBER NOT NULL,
+	typ_karty varchar(30) NOT NULL,
+	znizka_procent NUMBER NOT NULL,
+	data_wyrobienia DATE NOT NULL,
+	data_waznosci DATE NOT NULL,
+
+	CONSTRAINT Karty_pk PRIMARY KEY(Karta_ID)
+	);
+
+CREATE TABLE Klient (
+	Klient_ID NUMBER NOT NULL,
+	adres_ID NUMBER NOT NULL,
+	dane_ID NUMBER NOT NULL,
+	Karta_ID NUMBER,
+
+	CONSTRAINT Klient_pk PRIMARY KEY(Klient_ID),
+	CONSTRAINT Klient_fk0 FOREIGN KEY(adres_ID) REFERENCES Adresy(adres_ID),
+	CONSTRAINT Klient_fk1 FOREIGN KEY(dane_ID) REFERENCES Dane_osobowe(dane_ID),
+	CONSTRAINT Klient_fk2 FOREIGN KEY(Karta_ID) REFERENCES Karty(Karta_ID)
+
+	);
+
+CREATE TABLE Naprawy (
+	Naprawy_ID NUMBER NOT NULL,
+	opis_napraw varchar(100),
+	koszt_napraw NUMBER NOT NULL,
+
+	CONSTRAINT Naprawy_pk PRIMARY KEY(Naprawy_ID)
+	);
+
+CREATE TABLE Koszty (
+	koszt_ID NUMBER NOT NULL,
+	zuzyte_paliwo_litry NUMBER(6,2) NOT NULL,
+	koszt_paliwa NUMBER(7,2) NOT NULL,
+	naprawy_ID NUMBER,
+
+	CONSTRAINT Koszty_pk PRIMARY KEY(koszt_ID),
+	CONSTRAINT Koszty_fk0 FOREIGN KEY(naprawy_ID) REFERENCES Naprawy(naprawy_ID)
+	);
+
+CREATE TABLE Samochod (
+	Samochod_ID NUMBER NOT NULL,
+	numer_rejestracyjny varchar(20) NOT NULL,
+	marka varchar(20) NOT NULL,
+	model varchar(20),
+	rocznik NUMBER(5), 
+	pojemnosc_zbiornika_litry NUMBER(3),
+	koszt_ID NUMBER NOT NULL,
+	
+	CONSTRAINT Samochod_fk0 FOREIGN KEY(koszt_ID) REFERENCES Koszty(koszt_ID),
+	CONSTRAINT Samochod_pk PRIMARY KEY(Samochod_ID)
+	);
+
+CREATE TABLE Kierowcy (
+	Kierowca_ID NUMBER NOT NULL,
+	Pracownik_ID NUMBER NOT NULL,
+	Samochod_ID NUMBER NOT NULL,
+
+	CONSTRAINT Kierowcy_pk PRIMARY KEY(Kierowca_ID),
+	CONSTRAINT Kierowcy_fk0 FOREIGN KEY(Pracownik_ID) REFERENCES Pracownik(Pracownik_ID),
+	CONSTRAINT Kierowcy_fk1 FOREIGN KEY(Samochod_ID) REFERENCES Samochod(Samochod_ID)
+
+	);
+
+CREATE TABLE Oplaty (
+	Oplata_ID NUMBER NOT NULL,
+	kwota NUMBER NOT NULL,
+	termin_platnosci DATE NOT NULL,
+	rodzaj_platnosci varchar(20) DEFAULT 'gotówka' CONSTRAINT rodzaj_platnosci_check CHECK (rodzaj_platnosci IN ('gotówka', 'karta', 'blik', 'przelew', 'raty')),	
+	faktura_paragon varchar(8) DEFAULT 'paragon' CONSTRAINT faktura_paragon_check CHECK (faktura_paragon IN ('paragon', 'faktura', 'na lewo')),
+	dni_spoznienia NUMBER,
+
+	CONSTRAINT Oplaty_pk PRIMARY KEY(Oplata_ID)
+	);
+
+
+CREATE TABLE Zlecenie (
+	zlecenie_ID NUMBER NOT NULL,
+	ladunek varchar(40) NOT NULL,
+	ilosc_sztuk NUMBER(4) NOT NULL,
+	ogleglosc NUMBER ,
+	waga_tony NUMBER(4,2) NOT NULL,
+	data_rozpoczecia DATE NOT NULL,
+	data_zakonczenia DATE NOT NULL,
+	status varchar(20) DEFAULT 'w trakcie' CONSTRAINT status_check CHECK (status IN ('w trakcie', 'zrealizowane', 'zatrzymane w cle', 'opóźnia się', 'anulowane')),
+	Kierowca_ID NUMBER NOT NULL,
+	Klient_ID NUMBER NOT NULL,
+	Adres_odbioru_ID NUMBER NOT NULL,
+	Adres_dostawy_ID NUMBER NOT NULL,
+	Oplata_ID NUMBER NOT NULL,
+	
+
+	CONSTRAINT Zlecenie_pk PRIMARY KEY(zlecenie_ID),
+	CONSTRAINT Zlecenie_fk0 FOREIGN KEY(Kierowca_ID) REFERENCES Kierowcy(Kierowca_ID),
+	CONSTRAINT Zlecenie_fk1 FOREIGN KEY(Klient_ID) REFERENCES Klient(Klient_ID),
+	CONSTRAINT Zlecenie_fk2 FOREIGN KEY(Adres_odbioru_ID) REFERENCES Adresy(adres_ID),
+	CONSTRAINT Zlecenie_fk3 FOREIGN KEY(Adres_dostawy_ID) REFERENCES Adresy(adres_ID),
+	CONSTRAINT Zlecenie_fk4 FOREIGN KEY(Oplata_ID) REFERENCES Oplaty(Oplata_ID)
+	);
+
+--dodanie kolumny pensji do tabeli pracownik
+ALTER TABLE Pracownik
+ADD pensja NUMBER NOT NULL;
+
+
+--widok dane_osobowe_pracownik (działa)
+CREATE OR REPLACE VIEW pracownik_dane_osobowe AS
+    SELECT Pracownik_ID AS Numer_służbowy, Dane_osobowe.imie, Dane_osobowe.nazwisko, Dane_osobowe.telefon, DAne_osobowe.email, stanowisko
+    FROM Pracownik
+    INNER JOIN Dane_osobowe ON Pracownik.Dane_ID = Dane_osobowe.dane_ID
+    ORDER By Dane_osobowe.dane_ID ASC;
+
+--widok koszty_zleceń (działa)
+CREATE OR REPLACE VIEW koszty_zlecen AS
+    SELECT Zlecenie.Zlecenie_ID AS Numer_zlecenia, Zlecenie.ladunek, Zlecenie.waga_tony, Oplaty.kwota, Oplaty.faktura_paragon, Oplaty.termin_platnosci, Oplaty.dni_spoznienia
+    FROM Zlecenie, Oplaty
+    WHERE Zlecenie.oplata_ID = Oplaty.oplata_ID
+    ORDER BY Zlecenie.zlecenie_ID
+    WITH CHECK OPTION;
+
+
+
+
+--Próba widoku
+CREATE OR REPLACE VIEW samochod_pracownik AS
+    SELECT Pracownik_ID AS Numer_służbowy, Dane_osobowe.imie, Dane_osobowe.nazwisko, stanowisko, Kierowcy.Samochod_ID, Samochod.marka, Samochod.model
+    FROM Pracownik
+    INNER JOIN Dane_osobowe ON Pracownik.Dane_ID = Dane_osobowe.dane_ID
+    INNER JOIN Kierowcy ON Kierowcy.Pracownik_ID = Pracownik.Pracownik_ID
+    LEFT OUTER JOIN Samochod ON Kierowcy.Samochod_ID = Samochod.Samochod_ID
+    ORDER By Dane_osobowe.dane_ID ASC;
+
+--druga próba widoku
+CREATE OR REPLACE VIEW samochod_pracownik AS
+    SELECT Pracownik_ID AS Numer_służbowy, Dane_osobowe.imie, Dane_osobowe.nazwisko, Pracownik.stanowisko, Samochod_ID, Samochod.marka, Samochod.model
+    FROM Kierowcy
+    INNER JOIN Pracownik ON Kierowcy.Pracownik_ID = Pracownik.Pracownik_ID
+    INNER JOIN Dane_osobowe ON Pracownik.Dane_ID = Dane_osobowe.dane_ID
+    RIGHT OUTER JOIN Samochod ON Kierowcy.Samochod_ID = Samochod.Samochod_ID
+    ORDER By Dane_osobowe.dane_ID ASC;
