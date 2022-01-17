@@ -1,0 +1,137 @@
+############################################################################################
+
+--funkcja licząca średnią pensję pracowników mieszkających w Warszawie
+CREATE OR REPLACE FUNCTION srednia_pensji_pracownikow_z_warszawy
+RETURN NUMBER
+IS
+CURSOR pracownicy_z_warszawy IS 
+SELECT * FROM Pracownik
+INNER JOIN Dane_osobowe ON Dane_osobowe.dane_ID = Pracownik.dane_ID
+INNER JOIN Adresy ON Adresy.adres_ID = Pracownik.adres_ID
+WHERE Adresy.Miasto = 'Warszawa';
+zarobki_lacznie NUMBER;
+liczba_pracownikow NUMBER;
+tmp pracownicy_z_warszawy % ROWTYPE;
+
+BEGIN
+OPEN pracownicy_z_warszawy;
+zarobki_lacznie := 0;
+liczba_pracownikow := 0;
+LOOP
+    FETCH pracownicy_z_warszawy INTO tmp;
+    EXIT WHEN pracownicy_z_warszawy % NOTFOUND;
+    zarobki_lacznie := zarobki_lacznie + tmp.Pensja;
+    liczba_pracownikow := liczba_pracownikow + 1;
+END LOOP;
+CLOSE pracownicy_z_warszawy;
+RETURN zarobki_lacznie / liczba_pracownikow;
+END;
+/
+
+--sprawdzenie wyniku zwróconego przez funckję
+SELECT srednia_pensji_pracownikow_z_warszawy AS Średnia_wartość_wynagrodzenia_pracowników_mieszkających_w_Warszawie FROM DUAL;
+
+
+############################################################################################
+
+--procedura sprawdzająca poprawność danych osobowych o podanym w parametrze ID
+CREATE OR REPLACE PROCEDURE sprawdz_dane_o_osobie (dane_ID_par NUMBER)
+IS
+bledny_telefon EXCEPTION;
+bledne_dane EXCEPTION;
+    
+CURSOR dane_o_osobie IS 
+    SELECT dane_ID, Imie, Nazwisko, telefon
+    FROM Dane_osobowe
+    WHERE Dane_osobowe.dane_ID = dane_ID_par;
+
+BEGIN
+
+FOR tmp IN dane_o_osobie LOOP
+    IF tmp.dane_ID = dane_ID_par AND LENGTH (tmp.Imie) < 2 THEN DBMS_OUTPUT.PUT_LINE('Niepoprawne imię osoby o ID ' || dane_ID_par);
+    ELSE DBMS_OUTPUT.PUT_LINE('Imię osoby o ID ' || dane_ID_par || ' jest poprawne.');
+    END IF;
+    
+    IF tmp.dane_ID = dane_ID_par AND LENGTH (tmp.Nazwisko) < 2  THEN DBMS_OUTPUT.PUT_LINE('Niepoprawne nazwisko osoby o ID ' || dane_ID_par);
+    ELSE DBMS_OUTPUT.PUT_LINE('Nazwisko osoby o ID ' || dane_ID_par || ' jest poprawne.');
+    END IF;
+    
+    IF tmp.dane_ID = dane_ID_par AND (tmp.telefon IS NULL) THEN DBMS_OUTPUT.PUT_LINE('Niepoprawny numer telefonu osoby o ID ' || dane_ID_par);
+    ELSE DBMS_OUTPUT.PUT_LINE('Numer telefonu osoby o ID ' || dane_ID_par || ' jest poprawny.');
+    END IF;
+END LOOP;
+
+END;
+
+
+--wypisanie tabeli z danymi i wywołanie procedury w celu sprawdzenia poprawności jej działania
+SELECT * FROM Dane_osobowe WHERE dane_ID = 1;
+EXEC sprawdz_dane_o_osobie(1);
+
+
+############################################################################################
+
+--procedura, która kierowcom, którzy zrealizowali więcej zleceń niż powyżej średniej, 
+--zwiększy pensję o 1% za każde wykonane zlecenie powyżej średniej, ale nie więcej niż 20%
+CREATE OR REPLACE PROCEDURE podnies_pensje
+IS
+srednia_liczba_zlecen NUMBER;
+o_ile_wiecej NUMBER;
+
+CURSOR Kierowca_for_update IS
+    SELECT * FROM Pracownik
+    FOR UPDATE;
+
+CURSOR wykonane_przez_pracownika_zlecenia IS
+    SELECT * FROM 
+        (SELECT Kierowcy.Pracownik_ID, tmp_kursor.liczba_zlecen FROM Kierowcy,
+                    (SELECT Kierowca_ID, COUNT(*) AS liczba_zlecen FROM Zlecenie
+                    GROUP BY Kierowca_ID ORDER BY Kierowca_ID) tmp_kursor
+        WHERE tmp_kursor.Kierowca_ID = Kierowcy.Kierowca_ID
+        ORDER BY Pracownik_ID) tmp;
+
+BEGIN
+SELECT * INTO srednia_liczba_zlecen 
+FROM 
+    (SELECT AVG(liczba_zlecen) 
+    FROM 
+        (SELECT Kierowcy.Pracownik_ID, tmp_kursor.liczba_zlecen FROM Kierowcy,
+                    (SELECT Kierowca_ID, COUNT(*) AS liczba_zlecen FROM Zlecenie
+                    GROUP BY Kierowca_ID ORDER BY Kierowca_ID) tmp_kursor
+        WHERE tmp_kursor.Kierowca_ID = Kierowcy.Kierowca_ID
+        ORDER BY Pracownik_ID) 
+    tmp);
+
+FOR tmp_a IN wykonane_przez_pracownika_zlecenia LOOP
+    o_ile_wiecej := 0;
+    IF tmp_a.liczba_zlecen > srednia_liczba_zlecen THEN
+        FOR tmp_b IN Kierowca_for_update LOOP
+            o_ile_wiecej := tmp_a.liczba_zlecen - srednia_liczba_zlecen;
+            IF tmp_a.Pracownik_ID = tmp_b.Pracownik_ID AND o_ile_wiecej < 21 THEN
+                UPDATE Pracownik SET Pensja = Pensja * (1 + 0.01 * o_ile_wiecej) WHERE CURRENT OF Kierowca_for_update;
+            END IF;
+        END LOOP;
+    END IF;
+END LOOP;
+END;
+
+--wywołanie procedury i sprawdzenie, czy zmieniła dane w tabeli
+SELECT * FROM Pracownik;
+EXEC podnies_pensje;
+SELECT * FROM Pracownik;
+
+
+
+--działający SELECT wyświetlający ID pracownika, ID kierowcy i ile zleceń zrobił
+--SELECT Kierowcy.Pracownik_ID, Kierowcy.Kierowca_ID, tmp.liczba_zlecen FROM Kierowcy,
+--                    (SELECT Kierowca_ID, COUNT(*) AS liczba_zlecen FROM Zlecenie
+--                    GROUP BY Kierowca_ID ORDER BY Kierowca_ID) tmp
+--WHERE tmp.Kierowca_ID = Kierowcy.Kierowca_ID
+--ORDER BY Pracownik_ID;
+
+
+
+############################################################################################
+
+
+
