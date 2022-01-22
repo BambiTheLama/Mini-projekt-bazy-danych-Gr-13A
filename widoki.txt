@@ -30,11 +30,11 @@ CREATE OR REPLACE VIEW samochod_naprawy AS
 
 
 
-
-
+--ranking pracownikow
 CREATE OR REPLACE VIEW ranking_pracownikow AS
-SELECT d.imie,d.nazwisko,p.STANOWISKO
+SELECT d.imie,d.nazwisko,p.STANOWISKO,p.pensja,w.kierunek,w.nazwa_uczelni
 FROM Pracownik p,Wyksztalcenie w,Dane_osobowe d
-WHERE w.wyksztalcenie_ID=p.wyksztalcenie_ID AND d.dane_ID=p.dane_ID;
+WHERE w.wyksztalcenie_ID=p.wyksztalcenie_ID AND d.dane_ID=p.dane_ID
+ORDER BY p.pensja DESC;
 
 SELECT * FROM ranking_pracownikow;
