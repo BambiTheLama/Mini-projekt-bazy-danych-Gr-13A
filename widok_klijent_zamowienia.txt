@@ -1,6 +1,6 @@
 
 CREATE OR REPLACE VIEW klijent_zamowienia AS
-    SELECT k.Klient_ID, d.imie, d.nazwisko,o.kwota, o.kwota*z.ilosc_sztuk AS kwota_calkowita, z.ladunek, z.data_rozpoczecia, z.data_zakonczenia, z.status
+    SELECT k.Klient_ID, d.imie, d.nazwisko,o.kwota,z.ilosc_sztuk, z.ladunek, z.data_rozpoczecia, z.data_zakonczenia, z.status
     FROM Dane_osobowe d, Klient k,Oplaty o, Zlecenie z
     WHERE d.dane_ID = k.dane_ID AND z.Klient_ID = k.Klient_ID AND o.Oplata_ID = z.Oplata_ID
     ORDER By k.Klient_ID, z.status, z.data_rozpoczecia ASC;
