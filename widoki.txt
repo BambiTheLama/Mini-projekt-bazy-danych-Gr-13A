@@ -1,0 +1,40 @@
+--ranking miast
+CREATE OR REPLACE VIEW miasta_ranking AS
+    SELECT a.miasto,count(k.Klient_ID) AS ilosc_klientow ,count(z.zlecenie_ID) AS ilosc_zamowien
+    FROM Adresy a, Klient k, Zlecenie z
+    WHERE k.adres_ID = a.adres_ID AND z.Klient_ID=k.Klient_ID
+    GROUP BY a.miasto
+    ORDER By ilosc_zamowien DESC, ilosc_klientow DESC;
+    
+    SELECT * FROM miasta_ranking;
+
+--klijent zamowienia
+
+CREATE OR REPLACE VIEW klijent_zamowienia AS
+    SELECT k.Klient_ID, d.imie, d.nazwisko,o.kwota,z.ilosc_sztuk, z.ladunek, z.data_rozpoczecia, z.data_zakonczenia, z.status
+    FROM Dane_osobowe d, Klient k,Oplaty o, Zlecenie z
+    WHERE d.dane_ID = k.dane_ID AND z.Klient_ID = k.Klient_ID AND o.Oplata_ID = z.Oplata_ID
+    ORDER By k.Klient_ID, z.status, z.data_rozpoczecia ASC;
+    
+    SELECT * FROM klijent_zamowienia;
+
+--samochod naprawy 
+
+CREATE OR REPLACE VIEW samochod_naprawy AS
+    SELECT s.Samochod_ID AS numer_samochodu, s.numer_rejestracyjny, s.marka, s.model, s.rocznik, k.koszt_ID AS nr_nparway, n.koszt_napraw, n.opis_napraw
+    FROM Samochod s,Koszty k, Naprawy n
+    WHERE n.Naprawy_ID=k.naprawy_ID AND s.koszt_ID=k.koszt_ID
+    ORDER By s.Samochod_ID, n.koszt_napraw ASC;
+    
+    SELECT * FROM samochod_naprawy;
+
+
+
+
+
+CREATE OR REPLACE VIEW ranking_pracownikow AS
+SELECT d.imie,d.nazwisko,p.STANOWISKO
+FROM Pracownik p,Wyksztalcenie w,Dane_osobowe d
+WHERE w.wyksztalcenie_ID=p.wyksztalcenie_ID AND d.dane_ID=p.dane_ID;
+
+SELECT * FROM ranking_pracownikow;
